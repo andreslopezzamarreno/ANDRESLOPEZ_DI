@@ -37,7 +37,8 @@ public class Coche {
     }
 
     public void frenar(){
-        for (int i = velocidad; i > 0; i-=10) {
+        for (int i = velocidad; i > 0;
+             {
             velocidad -=10;
             System.out.println("Reduciendo velocidad: " + velocidad);
             try {

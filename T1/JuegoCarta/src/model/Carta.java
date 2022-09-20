@@ -1,7 +1,6 @@
 package model;
 
 public class Carta {
-
     //VARIABLES
     private int valor;
     private String palo;
@@ -9,14 +8,11 @@ public class Carta {
     private String nombre;
 
     //CONSTRUCTORES
-    public Carta(int valor, String palo,String nombre) {
+    public Carta(int valor, String palo, String nombre) {
         this.valor = valor;
         this.palo = palo;
         this.nombre = nombre;
     }
-
-    //METODOS
-
 
     //GETTER SETTER TOSTRING
     public int getValor() {
