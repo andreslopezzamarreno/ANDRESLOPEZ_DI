@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="631a4f88-b4ec-459a-9d21-0361645ce1a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../JuegoCarta/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JuegoCarta/src/model/Carta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JuegoCarta/src/model/Jugador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Colecciones/src/model/Coche.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Colecciones/src/model/Coche.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuegoCarta/out/production/JuegoCartas/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JuegoCarta/out/production/JuegoCartas/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuegoCarta/out/production/JuegoCartas/model/Jugador.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JuegoCarta/out/production/JuegoCartas/model/Jugador.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/juegoCartas.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/out/production/juegoCartas/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/out/production/juegoCartas/model/Carta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/src/model/Carta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/coches/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/coches/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ejerciciosPractica/EjercicioUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ejerciciosPractica/EjercicioUno.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -6,10 +6,21 @@ public class Coche {
     private int litrosDeposito;
 
     //constructores
-
+    public Coche(String tipoGasolina) {
+        this.tipoGasolina = tipoGasolina;
+    }
 
     //metodos
+    //todo: terminar este metodo
+    public void ponerGasolina(Surtidor surtidor,int cantidadLitros){
+        if(surtidor.getCapacidadActual() == 0 || surtidor.getCapacidadActual()<cantidadLitros){
 
+        } else if (surtidor.isFuncionando()) {
+            surtidor.quitarGasolina(cantidadLitros);
+        }else {
+            System.out.println("Surtidor roto");
+        }
+    }
 
     //getter y setter
     public String getTipoGasolina() {

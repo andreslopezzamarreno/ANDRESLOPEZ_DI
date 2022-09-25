@@ -7,7 +7,7 @@ public class Main {
     private static String nombre = "Andrés"; // null por defecto
     public static int edad; // 0 por defecto
     // las variables "siempre" son privadas o protected
-    public static boolean comienzo; // false
+    public static boolean comienzo = true; // false
 
 
 

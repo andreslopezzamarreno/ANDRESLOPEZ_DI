@@ -6,7 +6,7 @@ public class Gasolinera {
     //variables
     private String nombre;
     private ArrayList<Surtidor> surtidores;
-    private int gananias;
+    private int ganancias;
 
     //constructores
     public Gasolinera(String nombre) {
@@ -15,7 +15,7 @@ public class Gasolinera {
 
     //metodos
     public int obtenerNanancias(){
-        return gananias;
+        return ganancias;
     }
 
     //getter setter
@@ -36,10 +36,10 @@ public class Gasolinera {
     }
 
     public int getGananias() {
-        return gananias;
+        return ganancias;
     }
 
     public void setGananias(int gananias) {
-        this.gananias = gananias;
+        this.ganancias = gananias;
     }
 }

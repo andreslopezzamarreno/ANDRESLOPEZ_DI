@@ -11,6 +11,7 @@ public class EjercicioUno {
         String nombre;
         String saludo;
         String opcion;
+
         String frase = "%s %s son las %d:%d del %d de %s del %d";
         int hora = calendario.get(Calendar.HOUR_OF_DAY);
         int minutos = calendario.get(Calendar.MINUTE);
