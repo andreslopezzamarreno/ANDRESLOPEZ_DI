@@ -2,7 +2,7 @@ package model;
 
 public class Persona {
     //Variables
-    String nombre,dni, sexo;
+    String nombre, dni, sexo;
     double peso, altura;
     int edad;
 
@@ -28,27 +28,33 @@ public class Persona {
         this.edad = edad;
     }
 
+    public Persona(String nombre, String sexo, double peso, double altura, int edad) {
+        this.nombre = nombre;
+        this.sexo = sexo;
+        this.peso = peso;
+        this.altura = altura;
+        this.edad = edad;
+    }
+
     //Metodos
-    public int calcularImc(){
-        double imc = peso/(Math.pow(altura,2));
-        if(imc < 20){
+    public int calcularImc() {
+        double imc = peso / (Math.pow(altura, 2));
+        if (imc < 20) {
             return -1;
-        }else if(imc >= 20 && imc <= 25){
+        } else if (imc >= 20 && imc <= 25) {
             return 0;
-        }else{
+        } else if (imc > 20) {
             return 1;
+        } else {
+            return 2;
         }
     }
 
-    public boolean esMayorDeEdad(){
-        if (edad>= 18){
-            return true;
-        }else{
-            return false;
-        }
+    public boolean esMayorDeEdad() {
+        return edad >= 18;
     }
 
-    public void mostrarDatos(){
+    public void mostrarDatos() {
         System.out.println("Nombre: " + nombre);
         System.out.println("DNI: " + dni);
         System.out.println("Sexo: " + sexo);
@@ -86,7 +92,7 @@ public class Persona {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 
@@ -94,7 +100,7 @@ public class Persona {
         return altura;
     }
 
-    public void setAltura(int altura) {
+    public void setAltura(double altura) {
         this.altura = altura;
     }
 

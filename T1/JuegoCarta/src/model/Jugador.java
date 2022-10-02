@@ -20,12 +20,16 @@ public class Jugador {
     //metodos
     public void descartarse(ArrayList<Carta> nuevasCartas) {
         int posicion;
-        for (Carta nuevaCarta : nuevasCartas) {
-            System.out.println("Descartarte de carta");
-            ordenarCartas();
-            posicion = sc.nextInt();
-            getMano().remove(posicion);
-            getMano().add(nuevaCarta);
+        if (nuevasCartas.size() <= 3) {
+            for (Carta nuevaCarta : nuevasCartas) {
+                System.out.println("Descartarte de carta");
+                ordenarCartas();
+                posicion = sc.nextInt();
+                getMano().remove(posicion);
+                getMano().add(nuevaCarta);
+            }
+        } else {
+            System.out.println("No te puedes descartar de mas de tres cartas");
         }
     }
 
@@ -34,17 +38,20 @@ public class Jugador {
         int eliminarCarta;
         int aleatorio;
         System.out.println("Cuantas cartas quieres robar");
-        //todo: controlar que no pueda robar mas de 3 cartas al rival
         numeroCartas = sc.nextInt();
-        for (int j = 0; j < numeroCartas; j++) {
-            aleatorio = (int) (Math.random() * 10);
-            System.out.println("Que carta quieres borrar (indicar posicion 0-9)");
-            ordenarCartas();
-            eliminarCarta = sc.nextInt();
-            elotro.getMano().add(getMano().get(eliminarCarta));
-            getMano().remove(eliminarCarta);
-            getMano().add(elotro.getMano().get(aleatorio));
-            elotro.getMano().remove(aleatorio);
+        if (numeroCartas <= 3) {
+            for (int j = 0; j < numeroCartas; j++) {
+                aleatorio = (int) (Math.random() * 10);
+                System.out.println("Que carta quieres borrar (indicar posicion 0-9)");
+                ordenarCartas();
+                eliminarCarta = sc.nextInt();
+                elotro.getMano().add(getMano().get(eliminarCarta));
+                getMano().remove(eliminarCarta);
+                getMano().add(elotro.getMano().get(aleatorio));
+                elotro.getMano().remove(aleatorio);
+            }
+        } else {
+            System.out.println("No puedes robar mas de 3 cartas");
         }
     }
 

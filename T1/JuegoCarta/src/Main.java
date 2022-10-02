@@ -61,7 +61,6 @@ public class Main {
                     int numeroCartas;
                     ArrayList<Carta> nuevasCartas = new ArrayList<>();
                     System.out.println("Cuantas cartas quieres descartarte (1-3)");
-                    //todo: controlar que no pueda descartarse de mas de 3
                     numeroCartas = sc.nextInt();
                     for (int j = 0; j < numeroCartas; j++) {
                         nuevasCartas.add(baraja.get(0));

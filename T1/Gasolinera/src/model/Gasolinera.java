@@ -10,11 +10,16 @@ public class Gasolinera {
 
     //constructores
     public Gasolinera(String nombre) {
+        surtidores = new ArrayList<>();
         this.nombre = nombre;
     }
 
+    public void agregarSurtidor(Surtidor surtidor) {
+        surtidores.add(surtidor);
+    }
+
     //metodos
-    public int obtenerNanancias(){
+    public int obtenerNanancias() {
         return ganancias;
     }
 

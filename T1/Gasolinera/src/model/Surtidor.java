@@ -21,15 +21,16 @@ public class Surtidor {
     }
 
     //metodos
-    public void arreglar(){
+    public void arreglar() {
         setFuncionando(true);
     }
 
-    public void rellenar(int cantidad){
+    public void rellenar(int cantidad) {
         capacidadActual += cantidad;
+        capacidadTotal += cantidad;
     }
 
-    public void quitarGasolina(int cantidad){
+    public void quitarGasolina(int cantidad) {
         capacidadTotal -= cantidad;
     }
 

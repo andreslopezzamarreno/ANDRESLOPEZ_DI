@@ -11,14 +11,16 @@ public class Coche {
     }
 
     //metodos
-    //todo: terminar este metodo
-    public void ponerGasolina(Surtidor surtidor,int cantidadLitros){
-        if(surtidor.getCapacidadActual() == 0 || surtidor.getCapacidadActual()<cantidadLitros){
-
-        } else if (surtidor.isFuncionando()) {
+    public void ponerGasolina(Surtidor surtidor, int cantidadLitros) {
+        if (surtidor.getCapacidadTotal() == 0 || surtidor.getCapacidadTotal() < cantidadLitros) {
+            System.out.println("El surtidor esta vacio o no hay suficiente gasolina");
+        } else if (!surtidor.isFuncionando()) {
+            System.out.println("El surtidor esta roto");
+        } else if (!surtidor.getTipo().equalsIgnoreCase(getTipoGasolina())) {
+            System.out.println("El tipo de gasolina no coincide");
+        } else {
             surtidor.quitarGasolina(cantidadLitros);
-        }else {
-            System.out.println("Surtidor roto");
+            setLitrosDeposito(cantidadLitros);
         }
     }
 
