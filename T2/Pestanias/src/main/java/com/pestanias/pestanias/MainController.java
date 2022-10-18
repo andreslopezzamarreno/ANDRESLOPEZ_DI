@@ -7,11 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,7 +26,7 @@ public class MainController implements Initializable {
     private TabPane panelPestanias;
 
     @FXML
-    private Button botonNormal, botonNormal2 ;
+    private Button botonNormal, botonNormal2,botonSuma,botonResta,botonMultiplicar,botonDivision,botonIgual ;
 
     @FXML
     private ToggleButton botontoggle;
@@ -32,7 +35,14 @@ public class MainController implements Initializable {
     private RadioButton radio1,radio2,radio3;
 
     @FXML
-    private Label nombreTipo,descripcionTipo, comisionTipo;
+    private Label nombreTipo,descripcionTipo, comisionTipo,resultado;
+
+    @FXML
+    private TextField textFieldUno,textFieldDos;
+
+
+    @FXML
+    private GridPane gridBotones;
     private DropShadow sombraExterior;
     private ToggleGroup grupoRadios;
 
@@ -71,6 +81,20 @@ public class MainController implements Initializable {
         botonNormal.setOnAction(new ManejoPulsaciones());
         botonNormal2.setOnAction(new ManejoPulsaciones());
         botontoggle.setOnAction(new ManejoPulsaciones());
+        /*botonSuma.setOnAction(new ManejoPulsaciones());
+        botonResta.setOnAction(new ManejoPulsaciones());
+        botonMultiplicar.setOnAction(new ManejoPulsaciones());
+        botonDivision.setOnAction(new ManejoPulsaciones());
+         */
+
+        //lo mismo que lo comentado justo arriba
+        for (Node child : gridBotones.getChildren()){
+            if(child instanceof Button){
+                ((Button)child).setOnAction(new ManejoPulsaciones());
+            }
+        }
+
+
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
@@ -96,10 +120,18 @@ public class MainController implements Initializable {
                 System.out.println(t1);
                 botonNormal.setDisable(t1);
                 botonNormal2.setDisable(t1);
-
             }
         });
 
+        /*textFieldUno.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                char letraPulsada= keyEvent.getCharacter().charAt(0);
+                System.out.println(Character.isDigit(letraPulsada));
+            }
+        });
+
+         */
     }
 
     class ManejoRaton implements EventHandler<MouseEvent>{
@@ -128,10 +160,10 @@ public class MainController implements Initializable {
 
         @Override
         public void handle(ActionEvent actionEvent) {
-
             if(actionEvent.getSource()== botonNormal){
                 System.out.println("Botón 1 pulsado");
                 botontoggle.setSelected(true);
+                System.out.println(textFieldUno.getText());
             } else if (actionEvent.getSource() == botonNormal2) {
                 System.out.println("Botón 2 pulsado");
 
@@ -144,7 +176,43 @@ public class MainController implements Initializable {
                     botontoggle.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("switchoff.png"))));
 
                 }
+                } else if (actionEvent.getSource() == botonSuma) {
+                if (esNumero()){
+                    int suma = (Integer.parseInt(String.valueOf(textFieldUno.getText().charAt(0))) + Integer.parseInt(String.valueOf(textFieldUno.getText().charAt(0))));
+
+                    resultado.setText(""+suma);
+
+                }else{
+                    System.out.println("Uno de los dos campos no es un numero");
+                }
+            } else if (actionEvent.getSource() == botonResta) {
+                if (esNumero()){
+                    resultado.setText(textFieldUno.getText() + textFieldDos.getText());
+                }else{
+                    System.out.println("Uno de los dos campos no es un numero");
+                }
+            }else if (actionEvent.getSource() == botonMultiplicar) {
+                if (esNumero()){
+                    resultado.setText(textFieldUno.getText() + textFieldDos.getText());
+                }else{
+                    System.out.println("Uno de los dos campos no es un numero");
+                }
+            }else if (actionEvent.getSource() == botonDivision) {
+                if (esNumero()){
+                    resultado.setText(textFieldUno.getText() + textFieldDos.getText());
+                }else{
+                    System.out.println("Uno de los dos campos no es un numero");
+                }
             }
+        }
+
+
+        public Boolean esNumero(){
+            if (Character.isDigit(textFieldUno.getCharacters().charAt(0)) &&
+                    Character.isDigit(textFieldDos.getCharacters().charAt(0))){
+                return true;
+            }
+            return false;
         }
     }
 }
