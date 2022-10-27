@@ -18,7 +18,7 @@ public class CalculadoraController implements Initializable {
 
     @FXML
     private Button siete,ocho,nueve,multiplicar,cuatro,cinco,seis,resta,cero,dos,punto,tres,E,
-            suma,igual,AC,masMenos,modulo,division,uno,sacarExtesion,registro,cerrar,seno,factorial,raiz,elevado,ln,e;
+            suma,igual,AC,masMenos,modulo,division,uno,sacarExtesion,registro,cerrar,seno,coseno,tangente,elevado,raiz,factorial;
     @FXML
     private Label labelOperaciones;
     @FXML
@@ -82,7 +82,7 @@ public class CalculadoraController implements Initializable {
                 labelOperaciones.setText(labelOperaciones.getText()+0);
             }
             else if (actionEvent.getSource() == punto) {
-                labelOperaciones.setText(labelOperaciones.getText()+".");
+                labelOperaciones.setText(labelOperaciones.getText()+",");
             }else if (actionEvent.getSource() == E) {
 
             }else if (actionEvent.getSource() == igual) {
@@ -141,15 +141,15 @@ public class CalculadoraController implements Initializable {
             }
             else if (actionEvent.getSource() == seno) {
 
-            }else if (actionEvent.getSource() == factorial) {
+            }else if (actionEvent.getSource() == coseno) {
 
-            }else if (actionEvent.getSource() == raiz) {
+            }else if (actionEvent.getSource() == tangente) {
 
             }else if (actionEvent.getSource() == elevado) {
 
-            }else if (actionEvent.getSource() == ln) {
+            }else if (actionEvent.getSource() == raiz) {
 
-            }else if (actionEvent.getSource() == e) {
+            }else if (actionEvent.getSource() == factorial) {
 
             }
         }
