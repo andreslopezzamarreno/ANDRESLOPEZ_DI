@@ -1,4 +1,4 @@
-module com.pestanias.pestanias {
+module com.example.pizeria {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -10,7 +10,7 @@ module com.pestanias.pestanias {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
-    requires org.json;
-    opens com.pestanias.pestanias to javafx.fxml;
-    exports com.pestanias.pestanias;
+
+    opens com.example.pizeria to javafx.fxml;
+    exports com.example.pizeria;
 }

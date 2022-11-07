@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.pestanias</groupId>
-    <artifactId>Pestanias</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>Pizeria</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Pestanias</name>
+    <name>Pizeria</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -106,13 +106,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.json/json -->
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20220924</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -135,7 +128,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.pestanias.pestanias/com.pestanias.pestanias.HelloApplication</mainClass>
+                            <mainClass>com.example.pizeria/com.example.pizeria.PizzeriaApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

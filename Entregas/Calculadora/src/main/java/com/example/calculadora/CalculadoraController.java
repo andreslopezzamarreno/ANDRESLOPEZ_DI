@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
@@ -18,20 +19,24 @@ public class CalculadoraController implements Initializable {
 
     @FXML
     private Button siete,ocho,nueve,multiplicar,cuatro,cinco,seis,resta,cero,dos,punto,tres,E,
-            suma,igual,AC,masMenos,modulo,division,uno,sacarExtesion,registro,cerrar,seno,coseno,tangente,elevado,raiz,factorial;
+            suma,igual,AC,masMenos,modulo,division,uno,sacarExtesion,registro,cerrar,seno,coseno,tangente,elevado,raiz, ocultar,borrar;
     @FXML
     private Label labelOperaciones;
     @FXML
     private BorderPane panelGeneral;
     @FXML
-    private GridPane gridCalculadora,gridExtension;
+    private GridPane gridCalculadora,gridExtension,gridRegistro;
 
-    private int op1,op2,operacion;
+    @FXML
+    private TextArea areaRegistro;
 
+    private double op1,op2,resultado;
+    private String operacion;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         panelGeneral.getChildren().remove(gridExtension);
+        panelGeneral.getChildren().remove(gridRegistro);
         acciones();
     }
 
@@ -42,6 +47,11 @@ public class CalculadoraController implements Initializable {
             }
         }
         for(Node child: gridExtension.getChildren()){
+            if (child instanceof Button) {
+                ((Button)child).setOnAction(new ManejoPulsaciones());
+            }
+        }
+        for(Node child: gridRegistro.getChildren()){
             if (child instanceof Button) {
                 ((Button)child).setOnAction(new ManejoPulsaciones());
             }
@@ -82,48 +92,80 @@ public class CalculadoraController implements Initializable {
                 labelOperaciones.setText(labelOperaciones.getText()+0);
             }
             else if (actionEvent.getSource() == punto) {
-                labelOperaciones.setText(labelOperaciones.getText()+",");
-            }else if (actionEvent.getSource() == E) {
+                labelOperaciones.setText(labelOperaciones.getText()+".");
+            }
+            else if (actionEvent.getSource() == E) {
+                labelOperaciones.setText(labelOperaciones.getText()+"2.718");
+            }
+            else if (actionEvent.getSource() == igual) {
 
-            }else if (actionEvent.getSource() == igual) {
-                op2 = Integer.parseInt(String.valueOf(labelOperaciones.getText()));
                 switch (operacion){
-                    case 1:
-                        labelOperaciones.setText(""+(op1 +op2));
+                    case "+":
+                        op2 = Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                        resultado = op1 +op2;
                         break;
-                    case 2:
-                        labelOperaciones.setText(""+(op1 -op2));
+                    case "-":
+                        op2 = Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                        resultado = op1 -op2;
                         break;
-                    case 3:
-                        labelOperaciones.setText(""+(op1 *op2));
+                    case "*":
+                        op2 = Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                        resultado = op1 *op2;
                         break;
-                    case 4:
-                        labelOperaciones.setText(""+(op1/op2));
+                    case "/":
+                        op2 = Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                        resultado = op1 /op2;
+                        break;
+                    case "sin":
+                        resultado = Math.sin(op1);
+                        break;
+                    case "cos":
+                        resultado = Math.cos(op1);
+                        break;
+                    case "tan":
+                        resultado = Math.tan(op1);
+                        break;
+                    case "^":
+                        op2 = Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                        resultado = Math.pow(op1,op2);
+                        break;
+                    case "raiz":
+                        resultado = Math.sqrt(op1);
                         break;
 
                 }
-            }else if (actionEvent.getSource() == suma) {
-                op1= Integer.parseInt(String.valueOf(labelOperaciones.getText()));
-                operacion = 1;
+                labelOperaciones.setText(""+(resultado));
+
+                if(operacion.equalsIgnoreCase("sin")||operacion.equalsIgnoreCase("cos")||
+                        operacion.equalsIgnoreCase("tan")||operacion.equalsIgnoreCase("raiz")){
+                    areaRegistro.setText(areaRegistro.getText()+"\n"+operacion+op1+"="+resultado);
+                }else {
+                    areaRegistro.setText(areaRegistro.getText() + "\n" + op1 + operacion + op2 + "=" + resultado);
+                }
+
+            }
+            else if (actionEvent.getSource() == suma) {
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                operacion = "+";
                 labelOperaciones.setText("");
             }
             else if (actionEvent.getSource() == resta) {
-                op1= Integer.parseInt(String.valueOf(labelOperaciones.getText()));
-                operacion = 2;
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                operacion = "-";
                 labelOperaciones.setText("");
             }
             else if (actionEvent.getSource() == multiplicar) {
-                op1= Integer.parseInt(String.valueOf(labelOperaciones.getText()));
-                operacion = 3;
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                operacion = "*";
                 labelOperaciones.setText("");
             }
             else if (actionEvent.getSource() == division) {
-                op1= Integer.parseInt(String.valueOf(labelOperaciones.getText()));
-                operacion = 4;
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                operacion = "/";
                 labelOperaciones.setText("");
             }
             else if (actionEvent.getSource() == modulo) {
-                op1= Integer.parseInt(String.valueOf(labelOperaciones.getText()));
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
                 labelOperaciones.setText("");
             }
             else if (actionEvent.getSource() == masMenos) {
@@ -131,26 +173,42 @@ public class CalculadoraController implements Initializable {
             }else if (actionEvent.getSource() == AC) {
                 labelOperaciones.setText("");
             }
+            else if (actionEvent.getSource() == seno) {
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                operacion = "sin";
+                labelOperaciones.setText("sin"+op1);
+            }
+            else if (actionEvent.getSource() == coseno) {
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                operacion = "cos";
+            }
+            else if (actionEvent.getSource() == tangente) {
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                operacion = "tan";
+            }
+            else if (actionEvent.getSource() == elevado) {
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                operacion = "^";
+                labelOperaciones.setText("");
+            }
+            else if (actionEvent.getSource() == raiz) {
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                operacion = "raiz";
+            }
             else if (actionEvent.getSource() == sacarExtesion) {
                 panelGeneral.setLeft(gridExtension);
             }
             else if (actionEvent.getSource() == registro) {
-
-            }else if (actionEvent.getSource() == cerrar) {
+                panelGeneral.setRight(gridRegistro);
+            }
+            else if (actionEvent.getSource() == cerrar) {
                 panelGeneral.getChildren().remove(gridExtension);
             }
-            else if (actionEvent.getSource() == seno) {
-
-            }else if (actionEvent.getSource() == coseno) {
-
-            }else if (actionEvent.getSource() == tangente) {
-
-            }else if (actionEvent.getSource() == elevado) {
-
-            }else if (actionEvent.getSource() == raiz) {
-
-            }else if (actionEvent.getSource() == factorial) {
-
+            else if (actionEvent.getSource() == ocultar) {
+                panelGeneral.getChildren().remove(gridRegistro);
+            }
+            else if (actionEvent.getSource() == borrar) {
+                areaRegistro.setText("");
             }
         }
     }
