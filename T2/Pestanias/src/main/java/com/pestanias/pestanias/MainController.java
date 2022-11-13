@@ -79,8 +79,7 @@ public class MainController implements Initializable {
     @FXML
     private ObservableList<String> listaCombo, listaChoice, listaListView;
     //,listaUsuarios;
-
-    @FXML
+    
     private ObservableList<UsuarioJSON> listaUsuarios;
     private ObservableList<Usuario> listaCombo2;
 
@@ -169,6 +168,7 @@ public class MainController implements Initializable {
         sombraExterior = new DropShadow();
         grupoRadios = new ToggleGroup();
         radiosGeneros = new ToggleGroup();
+
         grupoRadios.getToggles().addAll(radio1, radio2, radio3);
 
         listaCombo = FXCollections.observableArrayList();
@@ -381,3 +381,6 @@ public class MainController implements Initializable {
         }
     }
 }
+
+
+

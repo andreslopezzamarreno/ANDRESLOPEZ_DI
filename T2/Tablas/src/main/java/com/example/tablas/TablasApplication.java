@@ -1,4 +1,4 @@
-package com.example.pizeria;
+package com.example.tablas;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +7,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PizzeriaApplication extends Application {
+public class TablasApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PizzeriaApplication.class.getResource("pizzeria-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 640, 480);
-        stage.setTitle("PIZZERIA");
+        FXMLLoader fxmlLoader = new FXMLLoader(TablasApplication.class.getResource("tablas-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        stage.setTitle("Tablas");
         stage.setScene(scene);
         stage.show();
     }
