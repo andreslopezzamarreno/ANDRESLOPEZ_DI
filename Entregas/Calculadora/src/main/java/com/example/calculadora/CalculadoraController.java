@@ -95,10 +95,9 @@ public class CalculadoraController implements Initializable {
                 labelOperaciones.setText(labelOperaciones.getText()+".");
             }
             else if (actionEvent.getSource() == E) {
-                labelOperaciones.setText(labelOperaciones.getText()+"2.718");
+                labelOperaciones.setText(labelOperaciones.getText()+Math.E);
             }
             else if (actionEvent.getSource() == igual) {
-
                 switch (operacion){
                     case "+":
                         op2 = Double.parseDouble(String.valueOf(labelOperaciones.getText()));
@@ -166,10 +165,12 @@ public class CalculadoraController implements Initializable {
             }
             else if (actionEvent.getSource() == modulo) {
                 op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
-                labelOperaciones.setText("");
+
+                labelOperaciones.setText(String.valueOf(op1*0.01));
             }
             else if (actionEvent.getSource() == masMenos) {
-
+                op1= Double.parseDouble(String.valueOf(labelOperaciones.getText()));
+                labelOperaciones.setText(String.valueOf(op1*-1));
             }else if (actionEvent.getSource() == AC) {
                 labelOperaciones.setText("");
             }

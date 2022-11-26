@@ -19,6 +19,15 @@ public class Pizza {
         this.precio = precio;
     }
 
+    public void mostrarDatos(){
+        System.out.println("PIZZA: " +nombre);
+        System.out.println("TAMAÑO: " +tamanio);
+        System.out.println("INGREDIENTES:");
+        for (int i = 0; i < ingredientes.size(); i++) {
+            System.out.println("\t- " + ingredientes.get(i).getNombre());
+        }
+    }
+
     public String getNombre() {
         return nombre;
     }

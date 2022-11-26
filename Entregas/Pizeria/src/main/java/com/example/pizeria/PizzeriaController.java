@@ -3,7 +3,10 @@ package com.example.pizeria;
 import com.example.pizeria.model.Ingrediente;
 import com.example.pizeria.model.Pedido;
 import com.example.pizeria.model.Pizza;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -50,6 +53,15 @@ public class PizzeriaController implements Initializable {
     }
     private void acciones() {
         realizarPedido.setOnAction(new ManejoPulsaciones());
+        pedidos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pedido>() {
+            @Override
+            public void changed(ObservableValue<? extends Pedido> observableValue, Pedido pedido, Pedido t1) {
+                System.out.println("ID: " + t1.getId());
+                System.out.println("NOMBRE: " +t1.getNombre());
+                System.out.println("TELEFONO: " +t1.getTelefono());
+                t1.getPizza().mostrarDatos();
+            }
+        });
     }
     class ManejoPulsaciones implements EventHandler<ActionEvent> {
         private int precio;
@@ -70,9 +82,9 @@ public class PizzeriaController implements Initializable {
                         case "Barbacoa":
                             ingredientes.add(new Ingrediente("bacon"));
                             ingredientes.add(new Ingrediente("Salasa barbacoa"));
-                            ingredientes.add(new Ingrediente("Main"));
+                            ingredientes.add(new Ingrediente("Mai<"));
                             ingredientes.add(new Ingrediente("Cebolla"));
-                            ingredientes.add(new Ingrediente("carne"));
+                            ingredientes.add(new Ingrediente("Carne"));
                             switch (seleccionado.getText()) {
                                 case "familiar" -> precio = 15;
                                 case "mediana" -> precio = 12;
@@ -91,7 +103,7 @@ public class PizzeriaController implements Initializable {
                             break;
                         case "Jamon y Queso":
                             ingredientes.add(new Ingrediente("Queso"));
-                            ingredientes.add(new Ingrediente("jamon"));
+                            ingredientes.add(new Ingrediente("Jamon"));
                             switch (seleccionado.getText()) {
                                 case "familiar" -> precio = 10;
                                 case "mediana" -> precio = 8;
@@ -116,6 +128,8 @@ public class PizzeriaController implements Initializable {
                 }
                 fieldNombre.setText("");
                 fieldTelefono.setText("");
+                tamanioPizza.selectToggle(null);
+                tipoPizzas.getSelectionModel().select(null);
             }
         }
     }

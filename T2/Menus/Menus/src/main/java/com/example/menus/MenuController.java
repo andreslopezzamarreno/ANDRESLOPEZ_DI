@@ -101,7 +101,7 @@ public class MenuController implements Initializable {
                     ventana.setScene(escena);
 
                     ComunicarDefectoController controller = fxmlLoader.getController();
-                    controller.recepcionarTexto("Texto pasar por defecto");
+                    controller.recepcionarTexto("Texto pasar por defecto 2");
                     controller.setController(MenuController.this);
                     //5. hacer visible la ventana
                     ventana.setTitle("Ventana secundaria");
