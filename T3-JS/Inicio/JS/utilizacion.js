@@ -1,6 +1,9 @@
-let objeto = new ClaseEjemplo("p1","p2",["p3"])
-
+/* let objeto = new ClaseEjemplo("p1","p2",["p3"])
 objeto.mostrarDatos()
+ */
+//titulo completa
+//tareas de texto --> descripcion  --> agregarDefinicion()
+//tareas multimedia --> fichero --> agregarFichero()
 
 class Tarea{
 
@@ -14,6 +17,47 @@ class Tarea{
 
     set setCompleta(boolean){
         this.completa = boolean
+    }
+
+    mostrarDatosNota(){
+        console.log(`\t titulo: ${this.titulo}`);
+        console.log(`\t\t completa: ${this.completa}`);
+    }
+}
+
+class tareaMultimedia extends Tarea{
+
+    fichero
+    constructor(titulo,fichero){
+        super(titulo) 
+        this.fichero = fichero
+    }
+
+    set setFichero(fichero){
+        this.fichero = fichero
+    }
+
+    mostrarDatosNota(){
+        super.mostrarDatosNota
+        console.log(`\t\t fichero: ${this.fichero}`);
+    }
+
+}
+
+class tareaTexto extends Tarea{
+    descripcion
+    constructor(titulo,descripcion){
+        super(titulo)
+        this.descripcion = descripcion
+    }
+
+    set setDescripcion(descripcion){
+        this.descripcion = descripcion
+    }
+
+    mostrarDatosNota(){
+        super.mostrarDatosNota
+        console.log(`\t\t descripcion: ${this.descripcion}`);
     }
 }
 
@@ -55,16 +99,18 @@ class nota{
         });
     }
 
-    listarTarea(){
-        this.tareas.forEach((item) => {console.log(item.titulo)
-            console.log(item.completa)})
+    listarTareas(){
+        console.log( this.titulo)
+        this.tareas.forEach((item) => {
+        
+            item.mostrarDatosNota()}) 
     }
 
-    completarTarea(tarea){
+    completarTarea(titulo){
         /*this.tareas.filter((item)=>{return item.titulo == tarea})
         .forEach((item) => item.setCompleta = true)*/
 
-        this.tareas.find((item)=>{return item.titulo == tarea}).completa = true
+        this.tareas.find((item)=>{return item.titulo == titulo}).completa = true
     }
 
 
@@ -92,7 +138,7 @@ class nota{
         this.tareas = tareas
     }
 }
-
+/* 
 
 let nota1 = new nota("Nota ejemplo","Esta nota es un ejemplo para hacer el ejercicio",new Date())
 
@@ -104,6 +150,8 @@ nota1.agregarTarea(new Tarea("tarea 2"))
 nota1.agregarTarea(new Tarea("tarea 3"))
 nota1.agregarTarea(new Tarea("tarea 4"))
 nota1.agregarTarea(new Tarea("tarea 4"))
+nota1.agregarTarea(new tareaMultimedia("tarea multimedia","./images/fichero.png"))
+nota1.agregarTarea(new tareaTexto("tarea de Texto","Esto es un ejemplo de tarea de texto utilizando extension"))
 
 nota1.completarTarea("tarea 1")
 nota1.completarTarea("tarea 3")
@@ -114,4 +162,6 @@ nota1.tareasCompletas()
 
 nota1.marcarCompleta()
 
-console.log(nota1.completa)
+console.log(nota1.completa) 
+
+ nota1.listarTareas()*/
