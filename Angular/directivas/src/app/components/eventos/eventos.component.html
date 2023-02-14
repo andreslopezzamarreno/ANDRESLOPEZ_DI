@@ -1,88 +1,96 @@
 <p>Componente realizado por {{ alumno.nombre }} {{ alumno.apellido }}</p>
 <img style="width: 30%" [src]="urlImagen" />
-<div>
-  <input
-    class="from-control"
-    placeholder="Introduce nombre"
-    type="text"
-    #inputNombre
-  />
-  <input
-    class="from-control"
-    placeholder="Introduce Apellido"
-    type="text"
-    #inputApellido
-  />
-  <select
-    class="form-select"
-    aria-label="Default select example"
-    #selectEstudios
-  >
-    <option value="1">Dam</option>
-    <option value="2">Daw</option>
-    <option value="3">Asir</option>
-  </select>
-  <div class="form-check" #radiocheck>
+<div class="row">
+  <div class="col">
     <input
-      class="form-check-input"
-      type="radio"
-      name="exampleRadios"
-      id="exampleRadios1"
-      value="option1"
-      checked
+      class="from-control"
+      placeholder="Introduce nombre"
+      type="text"
+      #inputNombre
     />
-    <label class="form-check-label" for="exampleRadios1"> Bachillerato </label>
-  </div>
-  <div class="form-check">
     <input
-      class="form-check-input"
-      type="radio"
-      name="exampleRadios"
-      id="exampleRadios2"
-      value="option2"
+      class="from-control"
+      placeholder="Introduce Apellido"
+      type="text"
+      #inputApellido
     />
-    <label class="form-check-label" for="exampleRadios2"> FP </label>
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      #selectEstudios
+    >
+      <option>Dam</option>
+      <option>Daw</option>
+      <option>Asir</option>
+    </select>
+    <div class="form-check" #radiocheck>
+      <input
+        class="form-check-input"
+        type="radio"
+        name="exampleRadios"
+        id="exampleRadios1"
+        value="bachillerato"
+        (change)="capturaCambioRadio('Bachillerato')"
+      />
+      <label class="form-check-label" for="exampleRadios1">
+        Bachillerato
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="exampleRadios"
+        id="exampleRadios2"
+        value="FP"
+        (change)="capturaCambioRadio('FP')"
+      />
+      <label class="form-check-label" for="exampleRadios2"> FP </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="exampleRadios"
+        id="exampleRadios3"
+        value="universidad"
+        (change)="capturaCambioRadio('Universidad')"
+      />
+      <label class="form-check-label" for="exampleRadios3"> Universidad </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="flexCheckDefault"
+        #checkEsperiencia
+        (change)="capturarExperiencia(checkEsperiencia.checked)"
+      />
+      <label class="form-check-label" for="flexCheckDefault">
+        experiencia
+      </label>
+    </div>
+    <button
+      class="btn btn-primary m-4"
+      (click)="
+        pulsacionBotonInicial(
+          inputNombre.value,
+          inputApellido.value,
+          selectEstudios.value
+        )
+      "
+    >
+      Pulsar
+    </button>
   </div>
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="exampleRadios"
-      id="exampleRadios3"
-      value="option3"
-    />
-    <label class="form-check-label" for="exampleRadios3"> Universidad </label>
-  </div>
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      value=""
-      id="flexCheckDefault"
-      #checkEsperiencia
-    />
-    <label class="form-check-label" for="flexCheckDefault"> experiencia </label>
-  </div>
-  <button
-    class="btn btn-primary m-4"
-    (click)="
-      pulsacionBotonInicial(
-        inputNombre.value,
-        inputApellido.value,
-        selectEstudios.options[selectEstudios.selectedIndex].innerText,
-        radiocheck.nodeName,
-        checkEsperiencia.value
-      )
-    "
-  >
-    Pulsar
-  </button>
 
-  <div class="datosAlumno">
-    <p>Nombre: {{ alumno.nombre }}</p>
-    <p>apellido: {{ alumno.apellido }}</p>
-    <p>Estudios: {{ alumno.estudios }}</p>
-    <p>ciclo: {{ alumno.ciclo }}</p>
-    <p>experiencia: {{ alumno.experiencia }}</p>
+  <div class="col">
+    <div class="datosAlumno col">
+      <p>Nombre: {{ alumno.nombre }}</p>
+      <p>apellido: {{ alumno.apellido }}</p>
+      <p>Estudios: {{ alumno.estudios }}</p>
+      <p>ciclo: {{ alumno.ciclo }}</p>
+      <p>experiencia: {{ alumno.experiencia }}</p>
+    </div>
   </div>
 </div>
