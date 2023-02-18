@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class DirectivaswitchComponent {
 
+  opcion = 1
+
+  seleccionRadio(event:any){
+    this.opcion= event.target.value
+  }
+
 }

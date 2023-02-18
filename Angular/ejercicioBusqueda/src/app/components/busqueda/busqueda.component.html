@@ -1,0 +1,152 @@
+<div class="row">
+  <div class="col">
+    <form>
+      <div class="m-4">
+        <label for="inputNombre" class="form-label">Nombre</label>
+        <input class="form-control" id="inputNombre" #nombre />
+      </div>
+      <div class="m-4">
+        <label for="inputApellido" class="form-label">Apellido</label>
+        <input class="form-control" id="inputApellido" #apellido />
+      </div>
+      <div class="m-4">
+        <label for="inputEdad" class="form-label">Edad</label>
+        <input class="form-control" id="inputEdad" #edad />
+      </div>
+      <select
+        class="form-select m-4"
+        aria-label="Default select example"
+        #ciclo
+      >
+        <option>DAM</option>
+        <option>DAW</option>
+        <option>ASIR</option>
+      </select>
+
+      <div class="form-check form-check-inline m-4">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="flexRadioDefault"
+          id="fp"
+          value="FP"
+          (change)="pasarEstudio($event)"
+        />
+        <label class="form-check-label" for="fp"> FP </label>
+      </div>
+      <div class="form-check form-check-inline m-4">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="flexRadioDefault"
+          id="universidad"
+          value="Universidad"
+          (change)="pasarEstudio($event)"
+        />
+        <label class="form-check-label" for="universidad"> Universidad </label>
+      </div>
+      <div class="form-check form-check-inline m-4">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="flexRadioDefault"
+          id="bachillerato"
+          value="Bachillerato"
+          (change)="pasarEstudio($event)"
+        />
+        <label class="form-check-label" for="bachillerato">
+          Bachillerato
+        </label>
+      </div>
+    </form>
+    <button
+      type="submit"
+      class="btn btn-primary m-4"
+      (click)="
+        aniadirAlumno(nombre.value, apellido.value, edad.value, ciclo.value)
+      "
+    >
+      agregar
+    </button>
+  </div>
+
+  <div class="col">
+    <h3 class="m-4">Numero de alumnos registrados {{ alumnos.length }}</h3>
+
+    <div class="m-4">
+      <label for="inputNombre" class="form-label">Buscar por ciclo </label>
+      <select
+        class="form-select m-4"
+        aria-label="Default select example"
+        #selectciclo
+      >
+        <option>DAM</option>
+        <option>DAW</option>
+        <option>ASIR</option>
+      </select>
+    </div>
+    <div class="m-4">
+      <label for="inputNombre" class="form-label">Buscar por estudios</label>
+      <select
+        class="form-select m-4"
+        aria-label="Default select example"
+        #selectestudios
+      >
+        <option>Universidad</option>
+        <option>FP</option>
+        <option>Bachillerato</option>
+      </select>
+    </div>
+    <div class="m-4">
+      <div class="form-check form-check-inline m-4">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="radioFiltros"
+          id="filtro1"
+          value="1"
+          (change)="verfiltro($event)"
+        />
+        <label class="form-check-label" for="filtro1"> filtro 1 </label>
+      </div>
+      <div class="form-check form-check-inline m-4">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="radioFiltros"
+          id="filtro2"
+          value="2"
+          (change)="verfiltro($event)"
+        />
+        <label class="form-check-label" for="filtro2"> filtro 2 </label>
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary m-4"
+      (click)="cambiarnumero(selectciclo.value, selectestudios.value)"
+    >
+      Buscar
+    </button>
+
+    <span [ngSwitch]="numAlumnosEncontrados">
+      <div *ngSwitchCase="0" class="alert alert-danger m-4" role="alert">
+        El numero de alumnos encontrados es: {{ numAlumnosEncontrados }}
+      </div>
+
+      <div *ngSwitchCase="1" class="alert alert-warning m-4" role="alert">
+        El numero de alumnos encontrados es: {{ numAlumnosEncontrados }}
+      </div>
+      <div *ngSwitchCase="2" class="alert alert-warning m-4" role="alert">
+        El numero de alumnos encontrados es: {{ numAlumnosEncontrados }}
+      </div>
+      <div *ngSwitchCase="3" class="alert alert-warning m-4" role="alert">
+        El numero de alumnos encontrados es: {{ numAlumnosEncontrados }}
+      </div>
+
+      <div *ngSwitchDefault class="alert alert-success m-4" role="alert">
+        El numero de alumnos encontrados es: {{ numAlumnosEncontrados }}
+      </div>
+    </span>
+  </div>
+</div>
