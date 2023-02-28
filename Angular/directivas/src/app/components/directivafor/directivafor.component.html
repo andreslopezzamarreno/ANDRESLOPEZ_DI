@@ -1,0 +1,66 @@
+<input type="text" #inputelemento />
+<button (click)="aniadirElemento(inputelemento.value)">Aniadir elemento</button>
+<ul>
+  <li *ngFor="let item of elementos">{{ item }}</li>
+</ul>
+
+<div class="form-check form-check-inline">
+  <input
+    class="form-check-input"
+    name="radios"
+    type="radio"
+    value="0"
+    id="todos"
+    (change)="filtro($event)"
+  />
+  <label class="form-check-label" for="todos"> todas </label>
+</div>
+<div class="form-check form-check-inline">
+  <input
+    class="form-check-input"
+    name="radios"
+    type="radio"
+    value="1"
+    id="custoUno"
+    (change)="filtro($event)"
+  />
+  <label class="form-check-label" for="custoUno"> curso 1 </label>
+</div>
+<div class="form-check form-check-inline">
+  <input
+    class="form-check-input"
+    name="radios"
+    type="radio"
+    value="2"
+    id="cursoDos"
+    (change)="filtro($event)"
+  />
+  <label class="form-check-label" for="cursoDos"> curso 2 </label>
+</div>
+
+<div class="row">
+  <div class="col" *ngFor="let item of asignaturas">
+    <div class="card m-1" style="width: 18rem">
+      <ng-container *ngIf="item.imagen != ''; else elseTemplate">
+        <img [src]="item.imagen" class="card-img-top" />
+      </ng-container>
+      <ng-template #elseTemplate>
+        <img
+          src="https://concepto.de/wp-content/uploads/2015/05/Default-1-e1547044737976.jpg"
+          class="card-img-top"
+        />
+      </ng-template>
+
+      <div class="card-body">
+        <h2 class="card-title">{{ item.nombre }}</h2>
+        <h4 class="card-title">{{ item.siglas }}</h4>
+        <h5>{{ item.ciclo }} {{ item.curso }}</h5>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let cono of item.conocimientos">
+            {{ cono }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
