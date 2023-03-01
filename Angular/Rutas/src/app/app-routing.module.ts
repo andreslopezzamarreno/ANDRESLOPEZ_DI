@@ -8,7 +8,7 @@ import { UnoComponentComponent } from './components/uno-component/uno-component.
 const routes: Routes = [
   { path: 'uno', component: UnoComponentComponent },
   { path: 'dos', component: DosComponentComponent },
-  { path: 'comunicar', component: ComunicarComponent },
+  { path: 'comunicar/:id', component: ComunicarComponent },
   { path: 'home', component: HomeComponent },
 ];
 

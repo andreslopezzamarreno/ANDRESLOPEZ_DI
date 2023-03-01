@@ -20,8 +20,7 @@ export class DirectivaforComponent {
   }
 
   filtro(evento: any) {
-    let curso = evento.target.velue;
-    console.log(curso);
+    let curso = Number(evento.target.value);
 
     this.asignaturas = this.servicioAsignatura.getAsignaturasFiltradas(curso);
   }

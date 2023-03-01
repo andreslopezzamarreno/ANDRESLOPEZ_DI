@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Filtrar
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" (click)="navegarComponente('Todas')"
+                >Todas</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="navegarComponente('Dam')"
+                >Dam</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="navegarComponente('Daw')"
+                >Daw</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet> </router-outlet>
+</div>

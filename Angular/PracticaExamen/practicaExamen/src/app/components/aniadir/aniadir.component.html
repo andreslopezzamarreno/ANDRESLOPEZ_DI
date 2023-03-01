@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col" *ngFor="let item of asignaturas">
+    <div class="card m-1" style="width: 18rem">
+      <ng-container *ngIf="item.imagen != ''; else elseTemplate">
+        <img [src]="item.imagen" class="card-img-top" />
+      </ng-container>
+      <ng-template #elseTemplate>
+        <img
+          src="https://concepto.de/wp-content/uploads/2015/05/Default-1-e1547044737976.jpg"
+          class="card-img-top"
+        />
+      </ng-template>
+
+      <div class="card-body">
+        <h2 class="card-title">{{ item.nombre }}</h2>
+        <h4 class="card-title">{{ item.siglas }}</h4>
+        <h5>{{ item.ciclo }} {{ item.curso }}</h5>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let cono of item.conocimientos">
+            {{ cono }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Asignatura } from '../model/asignatura';
-
+import { Asignatura } from '../model/Asignatura';
 @Injectable({
   providedIn: 'root',
 })
 export class AsignaturasService {
-  //
+  constructor() {}
 
   private asignaturas: Asignatura[] = [
     {
@@ -32,7 +31,7 @@ export class AsignaturasService {
       nombre: 'lenguaje de marcas',
       siglas: 'LENG',
       curso: 1,
-      ciclo: 'Dam',
+      ciclo: 'Daw',
       imagen:
         'https://www.tecnologia-informatica.com/wp-content/uploads/2018/07/programas-crear-programas-1-1.jpeg',
       conocimientos: ['CSS', 'HTML', 'bootstrap'],
@@ -62,7 +61,7 @@ export class AsignaturasService {
       nombre: 'Desarrollo interfaces',
       siglas: 'DI',
       curso: 2,
-      ciclo: 'Dam',
+      ciclo: 'Daw',
       imagen:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwE25zq5VkNNWXSWwNmOc__YrP2otyWi_Uvg&usqp=CAU',
       conocimientos: ['javaFX'],
@@ -79,19 +78,17 @@ export class AsignaturasService {
     },
   ];
 
-  constructor() {}
+  getAllAsignaturas(): Asignatura[] {
+    return this.asignaturas;
+  }
 
-  getAsignaturasFiltradas(condicion: number): Asignatura[] {
-    if (condicion == 1 || condicion == 2) {
+  getAsignaturasFiltradas(condicion: string): Asignatura[] {
+    if (condicion == 'Dam' || condicion == 'Daw') {
       return this.asignaturas.filter(
-        (item: Asignatura) => item.curso == condicion
+        (item: Asignatura) => item.ciclo == condicion
       );
     } else {
       return this.getAllAsignaturas();
     }
-  }
-
-  getAllAsignaturas(): Asignatura[] {
-    return this.asignaturas;
   }
 }
