@@ -15,11 +15,11 @@ export class AniadirComponent {
     private gestorRutas: ActivatedRoute
   ) {
     this.asignaturas = servicioAsignatura.getAllAsignaturas();
-    gestorRutas.params.subscribe((param) => {
-      this.datoComunicado = param['ciclo'];
-      this.asignaturas = this.servicioAsignatura.getAsignaturasFiltradas(
-        this.datoComunicado
-      );
-    });
+      gestorRutas.params.subscribe((param) => {
+        this.datoComunicado = param['ciclo'];
+        this.asignaturas = this.servicioAsignatura.getAsignaturasFiltradas(
+          this.datoComunicado
+        );
+      });
   }
 }

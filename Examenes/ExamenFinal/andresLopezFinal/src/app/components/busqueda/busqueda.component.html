@@ -1,0 +1,52 @@
+<div class="input-group mb-3">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Buscar por marca"
+    aria-label="Username"
+    aria-describedby="basic-addon1"
+    #marca
+  />
+</div>
+<div class="input-group mb-3">
+  <input
+    type="number"
+    class="form-control"
+    placeholder="Buscar por CV"
+    aria-label="Username"
+    aria-describedby="basic-addon1"
+    #cv
+  />
+</div>
+<button
+  type="button"
+  class="btn btn-success btn-lg"
+  (click)="filtarBusqueda(marca.value, cv.value)"
+>
+  filtrar
+</button>
+<div class="container m-4">
+  <div class="row">
+    <div class="col" *ngFor="let item of coches">
+      <div class="card" style="width: 18rem">
+        <ng-container *ngIf="item.imagen != ''; else elseTemplate">
+          <img [src]="item.imagen" class="card-img-top" />
+        </ng-container>
+        <ng-template #elseTemplate>
+          <img
+            src="https://media.architecturaldigest.com/photos/61e70371c830527fda2b5c82/16:9/w_2991,h_1682,c_limit/Mercedes-EQXX-1%20%5BMercedes-Benz%5D%20copy.jpg"
+            class="card-img-top"
+          />
+        </ng-template>
+        <div class="card-body">
+          <h2 class="card-title">{{ item.nombre }}</h2>
+          <h5 class="card-title">{{ item.marca }}</h5>
+          <h5 class="card-title">{{ item.cv }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="filtrado" class="alert alert-warning m-4" role="alert">
+    Numero de coches encontrados {{ coches.length }}
+  </div>
+</div>
