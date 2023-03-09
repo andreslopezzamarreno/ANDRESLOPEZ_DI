@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col" *ngFor="let item of coches">
     <div class="card" style="width: 18rem">
-      <ng-container *ngIf="item.imagen != ''; else elseTemplate">
+      <!-- <ng-container *ngIf="item.imagen != ''; else elseTemplate">
         <img [src]="item.imagen" class="card-img-top" />
       </ng-container>
       <ng-template #elseTemplate>
@@ -9,7 +9,9 @@
           src="https://media.architecturaldigest.com/photos/61e70371c830527fda2b5c82/16:9/w_2991,h_1682,c_limit/Mercedes-EQXX-1%20%5BMercedes-Benz%5D%20copy.jpg"
           class="card-img-top"
         />
-      </ng-template>
+      </ng-template> -->
+
+      <img [src]="item.imagen" class="card-img-top" />
       <div class="card-body">
         <h2 class="card-title">{{ item.nombre }}</h2>
         <h5 class="card-title">{{ item.marca }}</h5>

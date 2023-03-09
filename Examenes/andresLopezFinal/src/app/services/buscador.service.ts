@@ -1,3 +1,5 @@
+//ng g s services/buscador
+
 import { Injectable } from '@angular/core';
 import { Coche } from '../model/coche';
 @Injectable({
@@ -93,6 +95,7 @@ export class BuscadorService {
       return this.coches;
     }
   }
+
   filtrarCochesBusqueda(marca: string, cv: number): Coche[] {
     return this.coches.filter(
       (item: Coche) => item.marca == marca && item.cv >= cv

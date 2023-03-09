@@ -9,11 +9,12 @@ import { BuscadorService } from 'src/app/services/buscador.service';
 export class BusquedaComponent {
   coches: Coche[] = [];
 
-  filtrado = false;
+  filtrado = true;
+
   constructor(private servicioCoche: BuscadorService) {}
 
   filtarBusqueda(marca: string, cv: string) {
-    if (marca == '' || cv == '') {
+    /* if (marca == '' || cv == '') {
       this.coches = [];
       this.filtrado = false;
     } else {
@@ -23,6 +24,8 @@ export class BusquedaComponent {
       } else {
         this.filtrado = false;
       }
-    }
+    } */
+
+    this.coches = this.servicioCoche.filtrarCochesBusqueda(marca, Number(cv));
   }
 }

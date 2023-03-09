@@ -16,8 +16,9 @@ export class VehiculosComponent {
     private servicioCoche: BuscadorService,
     private router: ActivatedRoute
   ) {
-    router.params.subscribe((param) => {
-      this.tipoPasado = param['tipo'];
+    router.params.subscribe((cosas) => {
+      this.tipoPasado = cosas['tipo'];
+
       this.coches = this.servicioCoche.filtrarCochesServicio(this.tipoPasado);
     });
   }
